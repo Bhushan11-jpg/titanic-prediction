@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Titanic Survival Prediction</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
+    <style>
+        body {
+            margin-top: 50px;
+            background: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #007bff;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Titanic Survival Predictor 🚢</h2>
+        <form method="POST" action="/predict">
+            <label for="pclass">Passenger Class (1 = 1st, 2 = 2nd, 3 = 3rd)</label>
+            <input type="number" id="pclass" name="pclass" min="1" max="3" required>
+
+            <label for="sex">Sex (0 = Female, 1 = Male)</label>
+            <input type="number" id="sex" name="sex" min="0" max="1" required>
+
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" step="0.1" required>
+
+            <label for="fare">Fare</label>
+            <input type="number" id="fare" name="fare" step="0.01" required>
+
+            <label for="embarked">Embarked (0 = Cherbourg, 1 = Queenstown, 2 = Southampton)</label>
+            <input type="number" id="embarked" name="embarked" min="0" max="2" required>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction_text %}
+        <div class="result">
+            {{ prediction_text }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
